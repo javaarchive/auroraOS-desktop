@@ -1,0 +1,5 @@
+{
+    "name": "Template App",
+    "startOnBoot": false,
+    "isApp": true
+}
