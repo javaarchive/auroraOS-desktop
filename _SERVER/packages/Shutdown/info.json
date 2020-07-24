@@ -1,0 +1,5 @@
+{
+    "name": "Poweroff",
+    "startOnBoot": false,
+    "isApp": true
+}
