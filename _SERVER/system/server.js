@@ -40,9 +40,9 @@ async function readPermissions(path, user) {
 
 // copy and paste below to change passwords for now until Settings is updated
 // to set your administrator password, change "admin" to your password
-/*bcrypt.hash("admin", 2, function(err, result) {
+bcrypt.hash("testing", 2, function(err, result) {
   db.set("users.admin.password", result);
-})*/
+})
 
 app.get("/packages", async function(req, res) {
     const array = [];
