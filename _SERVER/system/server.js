@@ -7,7 +7,9 @@ const mime = require("mime/lite");
 const bodyParser = require("body-parser");
 const compression = require("compression");
 const rimraf = require("rimraf");
-const db = require("quick.db");
+//const db = require("quick.db");
+const Endb = require("endb"); // Quick db didn't work for me bcause of node issues
+const db = new Endb("sqlite://systemdb.sqlite");
 const bcrypt = require("bcrypt");
 var __dirname = path.resolve(__dirname, "../");
 
@@ -65,7 +67,7 @@ app.get("/packages", async function(req, res) {
 });
 
 app.post("/auth", async function(req, res) {
-  if (!db.get(`users.${req.body.username}.password`)) return res.send("Denied");
+  if (!(await db.get(`users.${req.body.username}.password`))) return res.send("Denied");
   const hash = await db.get(`users.${req.body.username}.password`);
   bcrypt.compare(req.body.password, hash, function(err, result) {
     if (result === true) {
